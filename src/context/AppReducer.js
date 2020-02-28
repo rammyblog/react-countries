@@ -1,0 +1,16 @@
+export default (state, action) => {
+    switch (action.type) {
+        case 'ALL_COUNTRIES':
+            return {
+                ...state,
+                countries: [...state.countries] 
+            };
+        // case 'ADD_TRANSACTION':
+        //     return {
+        //         ...state,
+        //         transactions: [action.payload, ...state.transactions]
+        //     }
+        default:
+            return state;
+    }
+}

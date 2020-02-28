@@ -1,38 +1,110 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background-color: hsl(0, 0%, 98%);
+  font-family: "Nunito";
+}
+
+nav {
+  display: flex;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+.text-bolder {
+  font-weight: 800;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-normal {
+  font-weight: 300;
+}
+
+
+.header-title {
+  flex-grow: 1;
+}
+
+.header-text {
+  padding: 30px;
+}
+
+.country-info{
+    font-size: 14px;
+    margin: 40px 0;
+	padding-left: 10px;
+
+}
+
+
+.text-center{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  grid-gap: 50px;
+  /* justify-content: center;
+  align-items: center; */
+  margin: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search-card{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  grid-gap: 50px;
+  margin: 50px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card-div {
+  width: 100%;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-div > img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.text-spacing{
+    margin: 5px 0;
+    
+}
+.country_name {
+	padding-left: 10px;
+	font-size: 20px;
+	margin: 15px 0;
+}
+
+.flex-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media(min-width: 375px){
+    .card {
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      
+      }
+  .flex-container {
+      display: block;
+    
+    }
+
   }
-  to {
-    transform: rotate(360deg);
+  .margin-left-home{
+    margin-left: 50px !important;
   }
-}
