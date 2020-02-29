@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Filter from './Filter';
 import Search from './Search';
+import NightsStayIcon from '@material-ui/icons/NightsStay';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 
 
-export default class Navbar extends Component {
+import { withContext } from '../context/withContext';
+class Navbar extends Component {
     render() {
+        const { toggleMode, mode } = this.props.value;
+
         return (
             <>
                 <nav>
@@ -14,15 +20,19 @@ export default class Navbar extends Component {
 
                     <div>
                         <i className="fas fa-moon-o"></i>
-                        <p className="header-text text-bold">Dark mode</p>
+                        <p className="header-text text-bold" onClick={() => toggleMode(!mode)}> {mode ? <WbSunnyIcon /> : <NightsStayIcon />} {mode ? ' Light Mode' : ' Dark Mode'} </p>
                     </div>
                 </nav>
-                <div className='flex-container'>
+                <section className='flex-container'>
 
                     <Search />
                     <Filter />
-                </div>
+                </section>
             </>
         );
     }
 }
+
+export default withContext(Navbar);
+
+

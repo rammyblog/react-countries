@@ -8,27 +8,68 @@ export class CountryDetail extends Component {
 
 
     state = {
-        countryDetail: null
+      country_name: null,
+      border_countries : []
     };
 
+    componentDidMount(){
+      const { countryDetail, getCountryWithCode, country} = this.props.value;
+
+      if(country.length !== 0){
+        country.border.forEach(code => {
+          console.log(getCountryWithCode(code));
+          
+          
+          this.setState({
+            border_countries : getCountryWithCode(code)
+
+          })
+        
+        })
+      }
+
+    }
     componentDidUpdate(prevProps){
-        const { countryDetail } = this.props.value;
-        if (this.state.countryDetail !== this.props.match.params.name) {
+        const { countryDetail, getCountryWithCode, country} = this.props.value;
+
+
+
+
+        if (this.state.country_name !== this.props.match.params.name) {
             countryDetail(this.props.match.params.name);
+
+            if(country.name !== undefined){
+              country.border.forEach(code => {
+
+                console.log(code);
+                
+                
+                this.setState({
+                  border_countries : getCountryWithCode(code)
+
+                })
+              
+              })
+            }
+            
             this.setState({
-                countryDetail: this.props.match.params.name
+                country_name: this.props.match.params.name
             });
+
+
+
         }
     }
 
   render() {
 
-    const {country}= this.props.value
-    console.log(country);
+    const {country, borders}= this.props.value
+    console.log(country.name);
     
 
     return (
       <Fragment>
+
         <div className="container">
           <button className="btn back-button mb-4"> <KeyboardBackspaceIcon/> Back</button>
 
@@ -54,11 +95,11 @@ export class CountryDetail extends Component {
               <p className="text-bold text-spacing">
                 Capital: <span className="text-normal">{country.capital}</span>
               </p>
-              <p>
+              <p className='text-bold'>
                 Border Countries:{" "}
-                <span className="btn back-button mb-3">France</span>{" "}
-                <span className="btn back-button mb-3">Germany</span>{" "}
-                <span className="btn back-button mb-3">Netherlands</span>{" "}
+                {
+                  borders.map(border => <span className="btn back-button mb-3 mr-1">{border}</span> )
+                }
               </p>
             </div>
 
@@ -68,21 +109,26 @@ export class CountryDetail extends Component {
                      {
                          country.topLevelDomain ? country.topLevelDomain[0]  : null
                      }
-
-                    
-                    
+          
                     </span>
               </p>
               <p className="text-bold text-spacing">
-                Currencies: <span className="text-normal"></span>
+                    Currencies: <span className="text-normal">{
+                              country.currencies ?  country.currencies[0].name : null
+                            
+                            }</span>
               </p>
               <p className="text-bold text-spacing">
                 Laguages:{" "}
-                <span className="text-normal">English, Yoruba, Igbo</span>
+                <span className="text-normal">{
+                              country.languages ?  country.languages[0].name : null
+                            
+                            }</span>
               </p>
             </div>
           </section>
         </div>
+
       </Fragment>
     )
   }

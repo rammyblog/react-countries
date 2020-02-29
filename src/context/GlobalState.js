@@ -12,7 +12,9 @@ class GlobalProvider extends Component {
         countries: [],
         searchCountries: [],
         filteredCountries: [],
-        country: []
+        country: [],
+        borders : [],
+        mode: localStorage.getItem('mode')
 
     };
 
@@ -32,7 +34,7 @@ class GlobalProvider extends Component {
                 tempCountries = [...tempCountries, singleCountry];
             });
         }).catch(err => {
-            console.log(err, err.data, err.response);
+            console.log(err, err.message, err.response);
         });
 
 
@@ -40,6 +42,27 @@ class GlobalProvider extends Component {
             return { countries: tempCountries };
         });
     };
+
+    getCountryWithCode =  (codeArray) => {
+
+        let tempCountries =  this.state.countries.slice();
+        let country = []
+
+        codeArray.forEach(countryCode => {
+            let borderCountry =  tempCountries.find(item => {
+                return item.alpha3Code.toLowerCase() === countryCode.toLowerCase()
+            })
+
+            country.push(borderCountry.name)
+        })
+    
+
+
+        this.setState(() => {
+            return {borders: country}
+        })
+        
+    }
 
     searchCountry = (name) => {
         let tempCountries = this.state.countries.slice();
@@ -73,24 +96,34 @@ class GlobalProvider extends Component {
         });
     };
 
-    countryDetail = async (name) => {
+    countryDetail =  (name) => {
 
         
-        let tempCountries = await this.state.countries.slice();
-        console.log(tempCountries);
-        
+        let tempCountries =  this.state.countries.slice();
+    
 
-        let country = await tempCountries.find(item => {
-            console.log(item.name);
+        let country =  tempCountries.find(item => {
             
             return item.name.toLowerCase() === name.toLowerCase()
         })
+        
+        console.log(country.borders);
+        
+
+            this.getCountryWithCode(country.borders)
 
         
 
         this.setState(() => {
             return { country: country };
         });
+    }
+
+    toggleMode = (mode) => {
+        localStorage.setItem('mode', mode);
+        this.setState(() => {
+            return {mode : mode}
+        })
     }
 
     render() {
@@ -101,7 +134,9 @@ class GlobalProvider extends Component {
                 searchCountry: this.searchCountry,
                 allCountries: this.allCountries,
                 filterCountry: this.filterCountry,
-                countryDetail: this.countryDetail
+                countryDetail: this.countryDetail,
+                getCountryWithCode: this.getCountryWithCode,
+                toggleMode: this.toggleMode
             }}>
                 {this.props.children}
             </GlobalContext.Provider>
