@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Country from "./Country";
 import { withContext } from "../context/withContext";
 
+
 export class SearchResults extends Component {
     state = {
         search_params: null

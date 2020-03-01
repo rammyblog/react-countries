@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import {withContext} from '../context/withContext';
 import { Link } from "react-router-dom";
+import numberWithCommas from './utils';
+
 
 
 export class CountryDetail extends Component {
@@ -50,7 +52,7 @@ export class CountryDetail extends Component {
 
     return (
       <Fragment>
-
+  
         <div className="container">
          <Link to='/'>
          <button className="btn back-button mb-4 mt-4"> <KeyboardBackspaceIcon/> Back</button>
@@ -68,7 +70,9 @@ export class CountryDetail extends Component {
             <div className="country-info-details">
               <p className="country_name text-bold">{country.name}</p>
               <p className="text-bold text-spacing">
-                Population: <span className="text-normal">{country.population}</span>
+                Population: <span className="text-normal">{country.population ? numberWithCommas(country.population) : null}
+                
+                </span>
               </p>
               <p className="text-bold text-spacing">
                 Region: <span className="text-normal">{country.region}</span>

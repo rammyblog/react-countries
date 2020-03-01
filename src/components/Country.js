@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import numberWithCommas from './utils';
 
 class Country extends Component {
 
@@ -21,7 +22,7 @@ class Country extends Component {
                         pathname: `/country/${this.convertSpacesToPlus(name)}/`
                     }}><p className="country_name text-bold">{name}</p></Link>
                     <div className="country-info">
-                        <p className="text-bold text-spacing">Population: <span className="text-normal">{population}</span></p>
+                        <p className="text-bold text-spacing">Population: <span className="text-normal">{numberWithCommas(population)}</span></p>
                         <p className="text-bold text-spacing">Region: <span className="text-normal">{region}</span></p>
                         <p className="text-bold text-spacing">Capital: <span className="text-normal">{capital}</span></p>
                     </div>
