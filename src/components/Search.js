@@ -4,7 +4,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import styles from './SearchStyles';
 import { withStyles } from '@material-ui/core/styles';
 import { GlobalConsumer } from '../context/GlobalState';
-import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 
@@ -25,7 +24,7 @@ export class Search extends Component {
 
                             }
                             }>
-                                <div class="form-group">
+                                <div className="form-group">
 
                                 <div className={` ${classes.search} card-div `}>
                                     <div className={classes.searchIcon}>

@@ -16,8 +16,7 @@ export class CountryDetail extends Component {
     };
 
     componentDidMount(){
-      const { countryDetail, countries, country} = this.props.value;
-      console.log(countries);
+      const { countryDetail, countries} = this.props.value;
       
 
       if(countries && countries.length > 0 ){
@@ -31,7 +30,7 @@ export class CountryDetail extends Component {
 
     }
     componentDidUpdate(prevProps){
-        const { countryDetail, getCountryWithCode, country} = this.props.value;
+        const { countryDetail} = this.props.value;
         console.log(this.props.match.params.name);
         
 

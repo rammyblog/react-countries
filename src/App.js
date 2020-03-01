@@ -16,22 +16,22 @@ class App extends Component {
 
   render() {
     // const mode = localStorage.getItem('mode') || 'lightTheme'
-    const {mode} = this.props.value 
+    const { mode } = this.props.value;
     let isTrueSet = mode === true || mode === 'true';
-    console.log(mode, isTrueSet);
-    
+
+
 
     return (
       <Router>
-          <ThemeProvider theme={() => isTrueSet ? darkTheme : lightTheme}>
+        <ThemeProvider theme={() => isTrueSet ? darkTheme : lightTheme}>
           <GlobalStyles />
-            <Navbar />
-            <BaseRouter />
-          </ThemeProvider>
+          <Navbar />
+          <BaseRouter />
+        </ThemeProvider>
       </Router>
     );
   }
 }
 
 
-export default withContext(App)
+export default withContext(App);

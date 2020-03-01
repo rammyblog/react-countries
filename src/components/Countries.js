@@ -11,7 +11,6 @@ class Countries extends Component {
 
     componentDidMount() {
         let randNumber = this.randomNumberGenerator();
-        // eslint-disable-next-line
         this.setState({
             randNumber: randNumber
         });
@@ -28,8 +27,6 @@ class Countries extends Component {
 
         return (
             <Fragment>
-
-               
                 <section className='card'>
                     <GlobalConsumer>
                     

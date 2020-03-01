@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Filter from './Filter';
 import Search from './Search';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
-import Brightness3Icon from '@material-ui/icons/Brightness3';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 
 
