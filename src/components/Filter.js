@@ -45,10 +45,11 @@ export default function Filter() {
   return (
     <div className='margin-left-home mr-5'>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label color-code">Region</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Region</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select color-code"
+          className='text-white'
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
