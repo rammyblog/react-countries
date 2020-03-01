@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    color: 'inherit'
   },
 }));
 
@@ -44,10 +45,10 @@ export default function Filter() {
   return (
     <div className='margin-left-home mr-5'>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Region</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label color-code">Region</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
+          id="demo-controlled-open-select color-code"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}

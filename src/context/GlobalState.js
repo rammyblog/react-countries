@@ -96,20 +96,19 @@ class GlobalProvider extends Component {
         });
     };
 
-    countryDetail =  (name) => {
+    convertPlusToSpace = (text) => {
+        const regex = /-/g;
+        return text.replace(regex, ' ');
+      };
 
-        
+
+    countryDetail =  (country_name) => {
+        let name = this.convertPlusToSpace(country_name)
         let tempCountries =  this.state.countries.slice();
-    
-
         let country =  tempCountries.find(item => {
-            
             return item.name.toLowerCase() === name.toLowerCase()
         })
         
-        console.log(country.borders);
-        
-
             this.getCountryWithCode(country.borders)
 
         

@@ -18,10 +18,7 @@ class Country extends Component {
                 <div className="card-div">
                     <img src={flag} alt="country-flag" />
                     <Link to={{
-                        pathname: `/country/${this.convertSpacesToPlus(name)}/`,
-                        state: {
-                            country: this.props.country
-                        }
+                        pathname: `/country/${this.convertSpacesToPlus(name)}/`
                     }}><p className="country_name text-bold">{name}</p></Link>
                     <div className="country-info">
                         <p className="text-bold text-spacing">Population: <span className="text-normal">{population}</span></p>

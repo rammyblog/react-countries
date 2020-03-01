@@ -23,7 +23,7 @@ class Navbar extends Component {
                         <p className="header-text text-bold" onClick={() => toggleMode(!mode)}> {mode ? <WbSunnyIcon /> : <NightsStayIcon />} {mode ? ' Light Mode' : ' Dark Mode'} </p>
                     </div>
                 </nav>
-                <section className='flex-container'>
+                <section className='grid-container'>
 
                     <Search />
                     <Filter />

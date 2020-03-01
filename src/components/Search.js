@@ -17,7 +17,7 @@ export class Search extends Component {
                     {(value) => (
                         <Fragment>
 
-                            <form onSubmit={(e) => {
+                            <form className='form-custom-class' onSubmit={(e) => {
                                 e.preventDefault();
                                 let search_string = e.target.search.value;
                                 value.searchCountry(search_string);
@@ -25,6 +25,7 @@ export class Search extends Component {
 
                             }
                             }>
+                                <div class="form-group">
 
                                 <div className={` ${classes.search} card-div `}>
                                     <div className={classes.searchIcon}>
@@ -42,6 +43,7 @@ export class Search extends Component {
                                         inputProps={{ 'aria-label': 'search' }}
                                     />
                                 </div>
+  </div>
                             </form>
 
                         </Fragment>

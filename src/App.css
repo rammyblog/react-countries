@@ -63,9 +63,9 @@ nav {
   margin: 50px;
 }
 
-.flex-container{
-  display: flex;
-  justify-content: space-around ;
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
 }
 
 
@@ -104,6 +104,12 @@ nav {
 }
 
 
+.form-custom-class{
+  width: 80%;
+}
+
+
+
 @media(min-width: 375px){
     .card {
          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -112,11 +118,12 @@ nav {
       
   }
 
-  @media only screen and (min-width: 375px){
+  @media only screen and (max-width: 600px){
 
-    .flex-container {
+    .grid-container {
       display: block;
     }
+
 
 
   }

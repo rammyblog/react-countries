@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import {withContext} from '../context/withContext';
+import { Link } from "react-router-dom";
 
 
 export class CountryDetail extends Component {
@@ -13,45 +14,27 @@ export class CountryDetail extends Component {
     };
 
     componentDidMount(){
-      const { countryDetail, getCountryWithCode, country} = this.props.value;
+      const { countryDetail, countries, country} = this.props.value;
+      console.log(countries);
+      
 
-      if(country.length !== 0){
-        country.border.forEach(code => {
-          console.log(getCountryWithCode(code));
-          
-          
-          this.setState({
-            border_countries : getCountryWithCode(code)
+      if(countries && countries.length > 0 ){
+        countryDetail(this.props.match.params.name);            
+        this.setState({
+            country_name: this.props.match.params.name
+        });
 
-          })
-        
-        })
       }
+
 
     }
     componentDidUpdate(prevProps){
         const { countryDetail, getCountryWithCode, country} = this.props.value;
-
-
-
+        console.log(this.props.match.params.name);
+        
 
         if (this.state.country_name !== this.props.match.params.name) {
-            countryDetail(this.props.match.params.name);
-
-            if(country.name !== undefined){
-              country.border.forEach(code => {
-
-                console.log(code);
-                
-                
-                this.setState({
-                  border_countries : getCountryWithCode(code)
-
-                })
-              
-              })
-            }
-            
+            countryDetail(this.props.match.params.name);            
             this.setState({
                 country_name: this.props.match.params.name
             });
@@ -63,15 +46,16 @@ export class CountryDetail extends Component {
 
   render() {
 
-    const {country, borders}= this.props.value
-    console.log(country.name);
-    
+    const {country, borders}= this.props.value    
 
     return (
       <Fragment>
 
         <div className="container">
-          <button className="btn back-button mb-4"> <KeyboardBackspaceIcon/> Back</button>
+         <Link to='/'>
+         <button className="btn back-button mb-4 mt-4"> <KeyboardBackspaceIcon/> Back</button>
+           </Link> 
+           
 
           <section className="card-details">
             <div className="card-details-img-div">
@@ -98,7 +82,7 @@ export class CountryDetail extends Component {
               <p className='text-bold'>
                 Border Countries:{" "}
                 {
-                  borders.map(border => <span className="btn back-button mb-3 mr-1">{border}</span> )
+                  borders.map( (border,_index) => <span className="btn back-button mb-3 mr-1" key={_index}>{border}</span> )
                 }
               </p>
             </div>

@@ -23,4 +23,19 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
+  .back-button{
+    background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+  }
+
+
+  #color-code {
+    
+      background: ${({ theme }) => theme.body};
+      color: ${({ theme }) => theme.text};
+    
+  
+  }
+
+
   `;
